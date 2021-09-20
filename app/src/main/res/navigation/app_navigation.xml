@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/groceryList">
+
+    <fragment
+        android:id="@+id/groceryList"
+        android:name="com.example.getirclone.ui.groceryList.GroceryList"
+        android:label="fragment_grocery_list"
+        tools:layout="@layout/fragment_grocery_list" >
+        <action
+            android:id="@+id/action_groceryList_to_itemDetail"
+            app:destination="@id/itemDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetail"
+        android:name="com.example.getirclone.ui.itemDetail.ItemDetail"
+        android:label="fragment_item_detail"
+        tools:layout="@layout/fragment_item_detail" />
+    <fragment
+        android:id="@+id/basket"
+        android:name="com.example.getirclone.ui.basket.Basket"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/action_basket_to_orderConfirmation"
+            app:destination="@id/orderConfirmation" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmation"
+        android:name="com.example.getirclone.ui.orderConfirmation.OrderConfirmation"
+        android:label="fragment_order_confirmation"
+        tools:layout="@layout/fragment_order_confirmation" />
+</navigation>
