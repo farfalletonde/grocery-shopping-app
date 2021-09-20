@@ -8,11 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getirclone.R
-import com.example.getirclone.model.ProductDetail
+import com.example.getirclone.model.productDetailCallbackModel.ProductDetailCallback
+import com.example.getirclone.model.searchCallbackModel.Product
 
 class GroceryListAdapter(
         private val context: Context,
-        private val dataset: List<ProductDetail>) : RecyclerView.Adapter<GroceryListAdapter.ItemViewHolder>() {
+        private val dataset: List<ProductDetailCallback>) : RecyclerView.Adapter<GroceryListAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         val itemName = view.findViewById<TextView>(R.id.listItemName)
@@ -27,7 +28,7 @@ class GroceryListAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.itemName.text = "item.title"
+        holder.itemName.text = item.title
         holder.itemPrice.text = item.price.toString()
     }
 

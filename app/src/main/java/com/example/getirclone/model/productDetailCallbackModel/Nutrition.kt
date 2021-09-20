@@ -1,4 +1,4 @@
-package com.example.getirclone.model
+package com.example.getirclone.model.productDetailCallbackModel
 
 data class Nutrition(
     val caloricBreakdown: CaloricBreakdown,
