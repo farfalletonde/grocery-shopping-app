@@ -1,15 +1,19 @@
 package com.example.getirclone.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.getirclone.R
 import com.example.getirclone.model.Product
 
 class GroceryListAdapter(
+    private val context: Context,
     private val dataset: List<Product>
 ) : RecyclerView.Adapter<GroceryListAdapter.ItemViewHolder>() {
 
@@ -27,7 +31,8 @@ class GroceryListAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.itemName.text = item.title
-        holder.itemPrice.text = item.price.toString()
+        holder.itemPrice.text = item.price.toString() + " ₺"
+        Glide.with(context).load(item.image).into(holder.itemImage);
     }
 
     override fun getItemCount() = dataset.size

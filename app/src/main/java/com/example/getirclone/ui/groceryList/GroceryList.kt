@@ -26,7 +26,7 @@ class GroceryList : Fragment() {
         val recyclerView = binding.productsRecyclerView
         recyclerView.setHasFixedSize(true)
         viewModel.searchResults.observe(viewLifecycleOwner, Observer {
-            recyclerView.adapter = GroceryListAdapter(it)
+            recyclerView.adapter = GroceryListAdapter(requireContext(), it)
             Log.e("MainA", it[0].title)
         })
 
