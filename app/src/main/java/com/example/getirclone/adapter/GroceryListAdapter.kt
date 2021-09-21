@@ -1,6 +1,5 @@
 package com.example.getirclone.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getirclone.R
-import com.example.getirclone.model.productDetailCallbackModel.ProductDetailCallback
-import com.example.getirclone.model.searchCallbackModel.Product
+import com.example.getirclone.model.Product
 
 class GroceryListAdapter(
-        private val context: Context,
-        private val dataset: List<ProductDetailCallback>) : RecyclerView.Adapter<GroceryListAdapter.ItemViewHolder>() {
+    private val dataset: List<Product>
+) : RecyclerView.Adapter<GroceryListAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         val itemName = view.findViewById<TextView>(R.id.listItemName)
