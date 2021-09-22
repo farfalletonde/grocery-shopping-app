@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.getirclone.api.RetrofitInstance
 import com.example.getirclone.model.Product
 import kotlinx.coroutines.*
-import retrofit2.Response
 import java.io.IOException
 import java.lang.Exception
 
