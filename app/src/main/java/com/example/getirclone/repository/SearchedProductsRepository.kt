@@ -7,6 +7,7 @@ import com.example.getirclone.api.RetrofitInstance
 import com.example.getirclone.model.Product
 import kotlinx.coroutines.*
 import retrofit2.Response
+import java.io.IOException
 import java.lang.Exception
 
 class SearchedProductsRepository {
@@ -19,6 +20,10 @@ class SearchedProductsRepository {
         GlobalScope.launch(Dispatchers.Main) {
             val response = try {
                 RetrofitInstance.api.searchGroceryProducts()
+            }
+            catch (e: IOException) {
+                Log.e("Repository", "no internet")
+                return@launch
             }
             catch (e: Exception) {
                 Log.e("Repository", "exception")

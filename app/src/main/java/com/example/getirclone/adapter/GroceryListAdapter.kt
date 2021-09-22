@@ -21,7 +21,7 @@ class GroceryListAdapter(
     inner class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         init {
             view.setOnClickListener {
-                listener.onItemClick(adapterPosition)
+                listener.onItemClick(adapterPosition, dataset[adapterPosition])
             }
         }
         val itemName = view.findViewById<TextView>(R.id.listItemName)
@@ -44,6 +44,6 @@ class GroceryListAdapter(
     override fun getItemCount() = dataset.size
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Int, item: Product)
     }
 }

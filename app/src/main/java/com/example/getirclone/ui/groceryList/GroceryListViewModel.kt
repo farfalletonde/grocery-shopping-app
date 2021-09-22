@@ -10,6 +10,6 @@ const val TAG = "MainActivity"
 class GroceryListViewModel : ViewModel() {
 
     val searchRepository = SearchedProductsRepository()
-    val searchResults = searchRepository.getProducts()
+    val productsList = searchRepository.getProducts()
 
 }

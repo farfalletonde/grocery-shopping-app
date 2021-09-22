@@ -18,7 +18,11 @@
         android:id="@+id/itemDetail"
         android:name="com.example.getirclone.ui.itemDetail.ItemDetail"
         android:label="fragment_item_detail"
-        tools:layout="@layout/fragment_item_detail" />
+        tools:layout="@layout/fragment_item_detail" >
+        <argument
+            android:name="product"
+            app:argType="com.example.getirclone.model.Product" />
+    </fragment>
     <fragment
         android:id="@+id/basket"
         android:name="com.example.getirclone.ui.basket.Basket"
