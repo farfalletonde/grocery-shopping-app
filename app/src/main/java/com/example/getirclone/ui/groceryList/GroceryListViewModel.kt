@@ -1,15 +1,22 @@
 package com.example.getirclone.ui.groceryList
 
-import android.util.Log
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.getirclone.model.Product
 import com.example.getirclone.repository.SearchedProductsRepository
+import kotlinx.coroutines.launch
 
 const val TAG = "MainActivity"
 
-class GroceryListViewModel : ViewModel() {
+class GroceryListViewModel(val productsRepository: SearchedProductsRepository) : ViewModel() {
 
-    val searchRepository = SearchedProductsRepository()
-    val productsList = searchRepository.getProducts()
+    val productsList = MutableLiveData<List<Product>>()
+    init {
+        getProducts()
+    }
+    private fun getProducts() = viewModelScope.launch {
+        productsList.value = productsRepository.getProducts().body()
+    }
 
 }

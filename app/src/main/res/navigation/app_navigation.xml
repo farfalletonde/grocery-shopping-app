@@ -22,6 +22,9 @@
         <argument
             android:name="product"
             app:argType="com.example.getirclone.model.Product" />
+        <action
+            android:id="@+id/action_itemDetail_to_basket"
+            app:destination="@id/basket" />
     </fragment>
     <fragment
         android:id="@+id/basket"

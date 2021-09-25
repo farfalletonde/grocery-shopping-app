@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.getirclone.adapter.GroceryListAdapter
 import com.example.getirclone.databinding.FragmentGroceryListBinding
 import com.example.getirclone.model.Product
+import com.example.getirclone.repository.SearchedProductsRepository
 
 class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
 
@@ -25,7 +26,8 @@ class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
 
         _binding = FragmentGroceryListBinding.inflate(inflater, container, false)
 
-        val viewModel = GroceryListViewModel()
+        val repository = SearchedProductsRepository()
+        val viewModel = ViewModelProvider(this, GroceryListViewModelProviderFactory(repository)).get(GroceryListViewModel::class.java)
         val recyclerView = binding.productsRecyclerView
 
         recyclerView.setHasFixedSize(true)

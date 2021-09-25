@@ -30,8 +30,11 @@ class GroceryListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.grocery_list_item, parent, false)
-        return ItemViewHolder(adapterLayout)
+        return ItemViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.grocery_list_item, parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
