@@ -7,17 +7,9 @@ import com.example.getirclone.repository.BasketRepository
 import kotlinx.coroutines.launch
 
 class ItemDetailViewModel: ViewModel() {
-
-    fun deleteProductFromBasket(product: Product) {
-        viewModelScope.launch {
-            BasketRepository.deleteProduct(product)
-        }
-    }
     fun addToBasket(product: Product) {
         viewModelScope.launch {
             BasketRepository.upsert(product)
         }
     }
-
-    fun getBasketProducts() = BasketRepository.getAllBasketItems()
 }

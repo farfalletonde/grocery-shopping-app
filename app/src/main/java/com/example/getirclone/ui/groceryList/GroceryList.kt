@@ -40,7 +40,6 @@ class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int, item: Product) {
-        Toast.makeText(requireContext(), "item $position clicked", Toast.LENGTH_LONG).show()
         requireView().findNavController().navigate(GroceryListDirections.actionGroceryListToItemDetail(item))
     }
 

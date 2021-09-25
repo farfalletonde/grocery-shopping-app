@@ -10,12 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.getirclone.R
 import com.example.getirclone.model.Product
+import com.example.getirclone.ui.basket.Basket
 
 class BasketListAdapter(
     private val context: Context,
-    private val dataset: List<Product>): RecyclerView.Adapter<BasketListAdapter.ItemViewHolder>() {
+    private val dataset: List<Product>,
+    private val listener: BasketListAdapter.OnItemClickListener): RecyclerView.Adapter<BasketListAdapter.ItemViewHolder>() {
 
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        init {
+            view.findViewById<ImageView>(R.id.deleteIcon).setOnClickListener {
+                listener.onItemClick(dataset[adapterPosition])
+            }
+        }
         val basketItemName = view.findViewById<TextView>(R.id.basket_product_name)
         val basketItemPrice = view.findViewById<TextView>(R.id.basket_product_price)
         val basketItemImage = view.findViewById<ImageView>(R.id.basket_product_image)
@@ -29,10 +36,14 @@ class BasketListAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.basketItemName.text = item.title
-        holder.basketItemPrice.text = item.price.toString()
+        holder.basketItemPrice.text = item.price.toString() + "₺"
         Glide.with(context).load(item.image).into(holder.basketItemImage)
     }
 
     override fun getItemCount() = dataset.size
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Product)
+    }
 
 }
