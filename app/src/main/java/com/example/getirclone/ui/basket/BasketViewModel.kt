@@ -14,6 +14,12 @@ class BasketViewModel: ViewModel() {
         }
     }
 
+    fun addToBasket(product: Product) {
+        viewModelScope.launch {
+            BasketRepository.upsert(product)
+        }
+    }
+
     fun getBasketProducts() = BasketRepository.getAllBasketItems()
 
 }

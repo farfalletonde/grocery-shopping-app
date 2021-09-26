@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.getirclone.databinding.FragmentOrderConfirmationBinding
+import com.google.android.material.snackbar.Snackbar
 
 class OrderConfirmation : Fragment() {
 
@@ -27,6 +28,7 @@ class OrderConfirmation : Fragment() {
                 for(product in it)
                     viewModel.deleteProductFromBasket(product)
             })
+            Snackbar.make(binding.orderConfirmationLayout, "Order successfully confirmed.", Snackbar.LENGTH_LONG).show()
             requireView().findNavController().navigate(OrderConfirmationDirections.actionOrderConfirmationToGroceryList())
 
         }

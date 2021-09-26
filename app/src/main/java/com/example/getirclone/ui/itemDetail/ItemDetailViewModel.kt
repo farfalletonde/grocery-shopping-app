@@ -12,4 +12,10 @@ class ItemDetailViewModel: ViewModel() {
             BasketRepository.upsert(product)
         }
     }
+
+    fun deleteProductFromBasket(product: Product) {
+        viewModelScope.launch {
+            BasketRepository.deleteProduct(product)
+        }
+    }
 }

@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.getirclone.databinding.FragmentItemDetailBinding
+import com.example.getirclone.ui.basket.BasketViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ItemDetail : Fragment() {
 
@@ -31,6 +33,10 @@ class ItemDetail : Fragment() {
         val viewModel = ViewModelProvider(this, ItemDetailViewModelProviderFactory()).get(ItemDetailViewModel::class.java)
         binding.addToBasketBtn.setOnClickListener {
             viewModel.addToBasket(args.product)
+            Snackbar.make(binding.itemDetailLayout, "${args.product.title} added to basket.", Snackbar.LENGTH_LONG)
+                .setAction("Undo", View.OnClickListener {
+                    viewModel.deleteProductFromBasket(args.product)
+                }).show()
         }
         binding.button.setOnClickListener {
             requireView().findNavController().navigate(ItemDetailDirections.actionItemDetailToBasket())
