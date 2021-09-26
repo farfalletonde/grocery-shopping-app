@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.getirclone.R
@@ -24,9 +23,9 @@ class GroceryListAdapter(
                 listener.onItemClick(adapterPosition, dataset[adapterPosition])
             }
         }
-        val itemName = view.findViewById<TextView>(R.id.listItemName)
-        val itemPrice = view.findViewById<TextView>(R.id.listItemPrice)
-        val itemImage = view.findViewById<ImageView>(R.id.listItemImage)
+        val itemName: TextView = view.findViewById(R.id.listItemName)
+        val itemPrice: TextView = view.findViewById(R.id.listItemPrice)
+        val itemImage: ImageView = view.findViewById(R.id.listItemImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -40,7 +39,7 @@ class GroceryListAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
         holder.itemName.text = item.title
-        holder.itemPrice.text = item.price.toString() + " ₺"
+        holder.itemPrice.text = "%.2f".format(item.price) + " ₺"
         Glide.with(context).load(item.image).into(holder.itemImage)
     }
 

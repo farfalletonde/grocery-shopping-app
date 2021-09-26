@@ -6,12 +6,10 @@ import android.content.Context
 class Application: Application() {
     override fun onCreate() {
         super.onCreate()
-        com.example.getirclone.Application.appContext = applicationContext
+        appContext = applicationContext
     }
 
     companion object {
-
-        lateinit  var appContext: Context
-
+        lateinit var appContext: Context
     }
 }

@@ -7,16 +7,14 @@ import com.example.getirclone.model.Product
 import com.example.getirclone.repository.SearchedProductsRepository
 import kotlinx.coroutines.launch
 
-const val TAG = "MainActivity"
-
-class GroceryListViewModel(val productsRepository: SearchedProductsRepository) : ViewModel() {
+class GroceryListViewModel : ViewModel() {
 
     val productsList = MutableLiveData<List<Product>>()
     init {
         getProducts()
     }
     private fun getProducts() = viewModelScope.launch {
-        productsList.value = productsRepository.getProducts().body()
+        productsList.value = SearchedProductsRepository.getProducts().body()
     }
 
 }
