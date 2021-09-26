@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_grocery_list" >
         <action
             android:id="@+id/action_groceryList_to_itemDetail"
-            app:destination="@id/itemDetail" />
+            app:destination="@id/itemDetail"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/itemDetail"
@@ -22,9 +23,6 @@
         <argument
             android:name="product"
             app:argType="com.example.getirclone.model.Product" />
-        <action
-            android:id="@+id/action_itemDetail_to_basket"
-            app:destination="@id/basket" />
     </fragment>
     <fragment
         android:id="@+id/basket"
@@ -33,7 +31,8 @@
         tools:layout="@layout/fragment_basket" >
         <action
             android:id="@+id/action_basket_to_orderConfirmation"
-            app:destination="@id/orderConfirmation" />
+            app:destination="@id/orderConfirmation"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmation"
@@ -42,6 +41,9 @@
         tools:layout="@layout/fragment_order_confirmation" >
         <action
             android:id="@+id/action_orderConfirmation_to_groceryList"
-            app:destination="@id/groceryList" />
+            app:destination="@id/groceryList"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/groceryList"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

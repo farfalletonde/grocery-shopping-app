@@ -33,6 +33,7 @@ class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
 
 
         viewModel = ViewModelProvider(this, BasketViewModelProviderFactory()).get(BasketViewModel::class.java)
+
         (viewModel as BasketViewModel).getBasketProducts().observe(viewLifecycleOwner, Observer { basketItems ->
             if(basketItems.isNotEmpty()) {
                 recyclerView.visibility = View.VISIBLE
