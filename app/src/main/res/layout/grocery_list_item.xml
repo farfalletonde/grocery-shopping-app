@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:layout_marginBottom="70dp"
-    android:layout_marginHorizontal="4dp">
+    android:layout_marginBottom="20dp"
+    android:layout_marginHorizontal="10dp"
+    android:background="@drawable/card_view"
+    android:backgroundTint="@color/white"
+    android:padding="20dp">
 
 
     <ImageView
@@ -21,10 +24,11 @@
     <TextView
         android:id="@+id/listItemName"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/roboto"
         android:text=""
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,22 +38,14 @@
         android:id="@+id/listItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/roboto_black"
         android:text=""
-        android:textColor="@color/black"
+        android:textColor="#069587"
         android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listItemImage" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#555555"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/listItemPrice"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

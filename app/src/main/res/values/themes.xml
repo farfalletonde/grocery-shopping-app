@@ -14,4 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/roboto</item>
     </style>
+
+    <style name="MySnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/card_view</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
 </resources>
