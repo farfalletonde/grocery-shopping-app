@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.getirclone.R
 import com.example.getirclone.databinding.FragmentItemDetailBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -24,8 +25,11 @@ class ItemDetail : Fragment() {
 
         val args = ItemDetailArgs.fromBundle(requireArguments())
 
-        binding.productName.text = args.product.title
-        Glide.with(this).load(args.product.image).into(binding.productImage)
+        binding.apply {
+            productName.text = args.product.title
+            productDescription.text = args.product.description
+            Glide.with(this@ItemDetail).load(args.product.image).into(productImage)
+        }
 
         val viewModel = ViewModelProvider(this, ItemDetailViewModelProviderFactory()).get(ItemDetailViewModel::class.java)
 
@@ -35,7 +39,7 @@ class ItemDetail : Fragment() {
             Snackbar.make(binding.itemDetailLayout, "${args.product.title} added to basket.", Snackbar.LENGTH_LONG)
                 .setAction("Undo", View.OnClickListener {
                     viewModel.deleteProductFromBasket(args.product)
-                }).show()
+                }).setAnchorView(R.id.bottomNavigationView).show()
         }
 
 

@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_groceryList_to_itemDetail"
             app:destination="@id/itemDetail"
-            app:enterAnim="@android:anim/slide_in_left" />
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/itemDetail"
@@ -32,7 +32,7 @@
         <action
             android:id="@+id/action_basket_to_orderConfirmation"
             app:destination="@id/orderConfirmation"
-            app:enterAnim="@android:anim/slide_in_left" />
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/orderConfirmation"

@@ -14,5 +14,4 @@ data class Product(
     val price: Double,
     val rating: Rating,
     val title: String
-): Serializable {
-}
+): Serializable

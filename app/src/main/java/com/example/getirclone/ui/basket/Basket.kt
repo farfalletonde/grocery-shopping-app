@@ -9,10 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.getirclone.R
 import com.example.getirclone.adapter.BasketListAdapter
 import com.example.getirclone.databinding.FragmentBasketBinding
 import com.example.getirclone.model.Product
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_basket.*
 
 class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
 
@@ -36,15 +38,23 @@ class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
 
         (viewModel as BasketViewModel).getBasketProducts().observe(viewLifecycleOwner, Observer { basketItems ->
             if(basketItems.isNotEmpty()) {
-                recyclerView.visibility = View.VISIBLE
-                recyclerView.adapter = BasketListAdapter(requireContext(), basketItems, this)
-                binding.emptyBasketTv.text = ""
-                binding.confirmBasketBtn.visibility = View.VISIBLE
+                recyclerView.apply {
+                    visibility = View.VISIBLE
+                    adapter = BasketListAdapter(requireContext(), basketItems, this@Basket)
+                }
+
+                binding.apply {
+                    emptyBasketTv.text = ""
+                    confirmBasketBtn.visibility = View.VISIBLE
+                }
             }
             else {
                 recyclerView.visibility = View.GONE
-                binding.confirmBasketBtn.visibility = View.GONE
-                binding.emptyBasketTv.text = "Basket is empty."
+
+                binding.apply {
+                    confirmBasketBtn.visibility = View.GONE
+                    emptyBasketTv.text = "Basket is empty"
+                }
             }
         })
 
@@ -57,10 +67,11 @@ class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
 
     override fun onItemClick(item: Product) {
         (viewModel as BasketViewModel).deleteProductFromBasket(item)
+
         Snackbar.make(binding.basketLayout, "${item.title} removed from basket.", Snackbar.LENGTH_LONG)
             .setAction("Undo", View.OnClickListener {
                 (viewModel as BasketViewModel).addToBasket(item)
-            }).show()
+            }).setAnchorView(R.id.bottomNavigationView).show()
     }
 
 }
