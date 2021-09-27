@@ -32,7 +32,7 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:text="Proceed to Checkout"
+            android:text="@string/proceed_to_checkout_btn"
             android:fontFamily="@font/roboto_bold"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

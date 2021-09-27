@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">GetirClone</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Bottom Navigation Menu-->
+    <string name="shopping_menu_tab">Shopping</string>
+    <string name="basket_menu_tab">Basket</string>
+
+    <!--Currency-->
+    <string name="currency">€</string>
+
+    <!--Snackbar-->
+    <string name="snackbar_undo">Undo</string>
+
+    <!--Item Detail-->
+    <string name="add_to_basket_btn">Add to Basket</string>
+    <string name="added_to_basket_snackbar">added to basket.</string>
+
+    <!--Basket-->
+    <string name="empty_basket">Basket is empty</string>
+    <string name="proceed_to_checkout_btn">Proceed to Checkout</string>
+    <string name="removed_from_basket_snackbar">removed from basket.</string>
+
+    <!--Order Confirmation-->
+    <string name="confirm_order_btn">Confirm Order</string>
+    <string name="order_confirmation_snackbar">Order confirmed successfully.</string>
+
+    <!--Notification-->
+    <string name="notification_title">Shopping App</string>
+    <string name="notification_text">Your order is on the way!</string>
 </resources>

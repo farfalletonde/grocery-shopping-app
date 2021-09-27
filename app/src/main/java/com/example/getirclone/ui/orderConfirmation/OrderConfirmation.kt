@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.getirclone.R
@@ -29,7 +28,7 @@ class OrderConfirmation : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
 
         _binding = FragmentOrderConfirmationBinding.inflate(inflater, container, false)
@@ -37,8 +36,8 @@ class OrderConfirmation : Fragment() {
 
         //creates notification and notification manager
         val notification = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-            .setContentTitle("Shopping App")
-            .setContentText("Your order is on the way!")
+            .setContentTitle(resources.getString(R.string.notification_title))
+            .setContentText(resources.getString(R.string.notification_text))
             .setSmallIcon(R.drawable.ic_baseline_shopping_basket_24)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
@@ -46,7 +45,7 @@ class OrderConfirmation : Fragment() {
 
 
         binding.confirmOrderBtn.setOnClickListener {
-            viewModel.getBasketProducts().observe(viewLifecycleOwner, Observer {
+            viewModel.getBasketProducts().observe(viewLifecycleOwner, {
                 for(product in it)
                     viewModel.deleteProductFromBasket(product)
             })
@@ -55,7 +54,7 @@ class OrderConfirmation : Fragment() {
             createNotificationChannel()
             notificationManager.notify(0, notification)
 
-            Snackbar.make(binding.orderConfirmationLayout, "Order successfully confirmed.", Snackbar.LENGTH_LONG).setAnchorView(R.id.bottomNavigationView).show()
+            Snackbar.make(binding.orderConfirmationLayout, R.string.order_confirmation_snackbar, Snackbar.LENGTH_LONG).setAnchorView(R.id.bottomNavigationView).show()
             requireView().findNavController().navigate(OrderConfirmationDirections.actionOrderConfirmationToGroceryList())
 
         }

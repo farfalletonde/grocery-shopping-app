@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.getirclone.adapter.GroceryListAdapter
@@ -20,7 +19,7 @@ class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentGroceryListBinding.inflate(inflater, container, false)
 
@@ -29,7 +28,7 @@ class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
 
         recyclerView.setHasFixedSize(true)
 
-        viewModel.productsList.observe(viewLifecycleOwner, Observer {
+        viewModel.productsList.observe(viewLifecycleOwner, {
             recyclerView.adapter = GroceryListAdapter(requireContext(), it, this)
         })
 

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text=""
         android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/basket_product_price"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="16dp"
-        android:text="TextView"
+        android:text=""
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -40,7 +40,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        tools:ignore="contentDescription"/>
 
     <ImageView
         android:id="@+id/deleteIcon"
@@ -51,7 +52,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_delete" />
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        tools:ignore="contentDescription"/>
 
     <View
         android:id="@+id/view"

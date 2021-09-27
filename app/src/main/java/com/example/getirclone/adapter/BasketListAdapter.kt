@@ -23,9 +23,9 @@ class BasketListAdapter(
             }
         }
 
-        val basketItemName = view.findViewById<TextView>(R.id.basket_product_name)
-        val basketItemPrice = view.findViewById<TextView>(R.id.basket_product_price)
-        val basketItemImage = view.findViewById<ImageView>(R.id.basket_product_image)
+        val basketItemName: TextView = view.findViewById(R.id.basket_product_name)
+        val basketItemPrice: TextView = view.findViewById(R.id.basket_product_price)
+        val basketItemImage: ImageView = view.findViewById(R.id.basket_product_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -35,8 +35,10 @@ class BasketListAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+        val itemPrice = "%.2f".format(item.price)
+        val formattedItemPrice = "$itemPrice ${context.resources.getString(R.string.currency)}"
         holder.basketItemName.text = item.title
-        holder.basketItemPrice.text = "%.2f".format(item.price) + "₺"
+        holder.basketItemPrice.text = formattedItemPrice
         Glide.with(context).load(item.image).into(holder.basketItemImage)
     }
 

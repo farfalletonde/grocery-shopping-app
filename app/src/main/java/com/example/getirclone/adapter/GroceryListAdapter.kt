@@ -38,8 +38,10 @@ class GroceryListAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
+        val itemPrice = "%.2f".format(item.price)
+        val formattedItemPrice = "$itemPrice ${context.resources.getString(R.string.currency)}"
         holder.itemName.text = item.title
-        holder.itemPrice.text = "%.2f".format(item.price) + " ₺"
+        holder.itemPrice.text = formattedItemPrice
         Glide.with(context).load(item.image).into(holder.itemImage)
     }
 

@@ -19,7 +19,7 @@ class ItemDetail : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentItemDetailBinding.inflate(inflater, container, false)
 
@@ -36,10 +36,10 @@ class ItemDetail : Fragment() {
         binding.addToBasketBtn.setOnClickListener {
             viewModel.addToBasket(args.product)
 
-            Snackbar.make(binding.itemDetailLayout, "${args.product.title} added to basket.", Snackbar.LENGTH_LONG)
-                .setAction("Undo", View.OnClickListener {
+            Snackbar.make(binding.itemDetailLayout, "${args.product.title} ${resources.getString(R.string.added_to_basket_snackbar)}", Snackbar.LENGTH_LONG)
+                .setAction(resources.getString(R.string.snackbar_undo)) {
                     viewModel.deleteProductFromBasket(args.product)
-                }).setAnchorView(R.id.bottomNavigationView).show()
+                }.setAnchorView(R.id.bottomNavigationView).show()
         }
 
 
