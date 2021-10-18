@@ -1,6 +1,5 @@
 package com.example.getirclone.di
 
-import androidx.room.FtsOptions
 import com.example.getirclone.api.RetrofitInstance
 import com.example.getirclone.database.BasketDatabase
 import com.example.getirclone.repository.BasketRepository
@@ -14,6 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 object Modules {
+
     val apiModule = module {
         single {
             RetrofitInstance.api
