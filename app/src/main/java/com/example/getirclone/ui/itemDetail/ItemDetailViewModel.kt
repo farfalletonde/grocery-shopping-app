@@ -6,16 +6,17 @@ import com.example.getirclone.model.Product
 import com.example.getirclone.repository.BasketRepository
 import kotlinx.coroutines.launch
 
-class ItemDetailViewModel: ViewModel() {
+class ItemDetailViewModel
+constructor(val basketRepository: BasketRepository): ViewModel() {
     fun addToBasket(product: Product) {
         viewModelScope.launch {
-            BasketRepository.upsert(product)
+            basketRepository.upsert(product)
         }
     }
 
     fun deleteProductFromBasket(product: Product) {
         viewModelScope.launch {
-            BasketRepository.deleteProduct(product)
+            basketRepository.deleteProduct(product)
         }
     }
 }

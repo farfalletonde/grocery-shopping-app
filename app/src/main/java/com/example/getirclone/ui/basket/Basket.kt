@@ -14,13 +14,14 @@ import com.example.getirclone.databinding.FragmentBasketBinding
 import com.example.getirclone.model.Product
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_basket.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
 
 
     private var _binding: FragmentBasketBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: ViewModel
+    private val viewModel by viewModel<BasketViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +34,7 @@ class Basket : Fragment(), BasketListAdapter.OnItemClickListener {
         recyclerView.setHasFixedSize(true)
 
 
-        viewModel = ViewModelProvider(this, BasketViewModelProviderFactory()).get(BasketViewModel::class.java)
-
-        (viewModel as BasketViewModel).getBasketProducts().observe(viewLifecycleOwner, { basketItems ->
+        viewModel.getBasketProducts().observe(viewLifecycleOwner, { basketItems ->
             if(basketItems.isNotEmpty()) {
                 recyclerView.apply {
                     visibility = View.VISIBLE

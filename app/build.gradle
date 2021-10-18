@@ -63,7 +63,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     //coroutine dependency
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     //glide dependency
@@ -80,5 +80,10 @@ dependencies {
 
     //material dependency
     implementation 'com.google.android.material:material:1.4.0'
+
+    //koin
+    def koin_version = "3.1.2"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
 }

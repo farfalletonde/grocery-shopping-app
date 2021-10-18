@@ -16,6 +16,7 @@ import androidx.navigation.findNavController
 import com.example.getirclone.R
 import com.example.getirclone.databinding.FragmentOrderConfirmationBinding
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OrderConfirmation : Fragment() {
 
@@ -24,6 +25,7 @@ class OrderConfirmation : Fragment() {
 
     private val CHANNEL_ID = "channelID"
     private val CHANNEL_NAME = "channelName"
+    private val viewModel by viewModel<OrderConfirmationViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +34,6 @@ class OrderConfirmation : Fragment() {
 
 
         _binding = FragmentOrderConfirmationBinding.inflate(inflater, container, false)
-        val viewModel = ViewModelProvider(this, OrderConfirmationViewModelProviderFactory()).get(OrderConfirmationViewModel::class.java)
 
         //creates notification and notification manager
         val notification = NotificationCompat.Builder(requireContext(), CHANNEL_ID)

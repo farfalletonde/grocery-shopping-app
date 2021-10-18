@@ -10,11 +10,13 @@ import androidx.navigation.findNavController
 import com.example.getirclone.adapter.GroceryListAdapter
 import com.example.getirclone.databinding.FragmentGroceryListBinding
 import com.example.getirclone.model.Product
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
 
     private var _binding: FragmentGroceryListBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModel<GroceryListViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +25,6 @@ class GroceryList : Fragment(), GroceryListAdapter.OnItemClickListener {
 
         _binding = FragmentGroceryListBinding.inflate(inflater, container, false)
 
-        val viewModel = ViewModelProvider(this, GroceryListViewModelProviderFactory()).get(GroceryListViewModel::class.java)
         val recyclerView = binding.productsRecyclerView
 
         recyclerView.setHasFixedSize(true)

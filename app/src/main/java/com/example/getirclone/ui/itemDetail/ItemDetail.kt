@@ -10,11 +10,13 @@ import com.bumptech.glide.Glide
 import com.example.getirclone.R
 import com.example.getirclone.databinding.FragmentItemDetailBinding
 import com.google.android.material.snackbar.Snackbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ItemDetail : Fragment() {
 
     private var _binding: FragmentItemDetailBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModel<ItemDetailViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +32,6 @@ class ItemDetail : Fragment() {
             productDescription.text = args.product.description
             Glide.with(this@ItemDetail).load(args.product.image).into(productImage)
         }
-
-        val viewModel = ViewModelProvider(this, ItemDetailViewModelProviderFactory()).get(ItemDetailViewModel::class.java)
 
         binding.addToBasketBtn.setOnClickListener {
             viewModel.addToBasket(args.product)
