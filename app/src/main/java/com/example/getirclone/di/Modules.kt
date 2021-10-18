@@ -1,5 +1,6 @@
 package com.example.getirclone.di
 
+import androidx.room.FtsOptions
 import com.example.getirclone.api.RetrofitInstance
 import com.example.getirclone.database.BasketDatabase
 import com.example.getirclone.repository.BasketRepository
@@ -23,34 +24,26 @@ object Modules {
             BasketDatabase.invoke(androidContext())
         }
     }
-    val basketRepositoryModule = module {
+    val repositoriesModule = module {
         single {
-            BasketRepository
+            SearchedProductsRepository(get())
+        }
+        single {
+            BasketRepository(get())
         }
     }
-    val searchedProductsRepositoryModule = module {
-        single {
-            SearchedProductsRepository
-        }
-    }
-    val basketViewModelModule = module {
+    val viewModelsModule = module {
         viewModel {
             BasketViewModel(get())
         }
-    }
-    val groceryListViewModelModule = module {
-        viewModel {
-            GroceryListViewModel(get())
-        }
-    }
-    val itemDetailViewModelModule = module {
         viewModel {
             ItemDetailViewModel(get())
         }
-    }
-    val orderConfirmationViewModelModule = module {
         viewModel {
             OrderConfirmationViewModel(get())
+        }
+        viewModel {
+            GroceryListViewModel(get())
         }
     }
 }

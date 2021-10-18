@@ -12,12 +12,8 @@ class Application: Application() {
         startKoin {
             modules(Modules.apiModule,
                 Modules.roomModule,
-                Modules.basketRepositoryModule,
-                Modules.searchedProductsRepositoryModule,
-                Modules.basketViewModelModule,
-                Modules.groceryListViewModelModule,
-                Modules.itemDetailViewModelModule,
-                Modules.orderConfirmationViewModelModule)
+                Modules.repositoriesModule,
+                Modules.viewModelsModule)
         }
     }
 

@@ -1,12 +1,9 @@
 package com.example.getirclone.repository
 
-import com.example.getirclone.Application
 import com.example.getirclone.database.BasketDatabase
 import com.example.getirclone.model.Product
 
-object BasketRepository {
-
-    private val database = BasketDatabase(Application.appContext)
+class BasketRepository(private val database: BasketDatabase) {
 
     fun getAllBasketItems() = database.getProductDao().getAllBasketItems()
 
