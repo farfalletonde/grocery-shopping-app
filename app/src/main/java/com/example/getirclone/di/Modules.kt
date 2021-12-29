@@ -15,35 +15,19 @@ import org.koin.dsl.module
 object Modules {
 
     val apiModule = module {
-        single {
-            RetrofitInstance.api
-        }
+        single { RetrofitInstance.api }
     }
     val roomModule = module {
-        single {
-            BasketDatabase.invoke(androidContext())
-        }
+        single { BasketDatabase.invoke(androidContext()) }
     }
     val repositoriesModule = module {
-        single {
-            SearchedProductsRepository(get())
-        }
-        single {
-            BasketRepository(get())
-        }
+        single { SearchedProductsRepository(get()) }
+        single { BasketRepository(get()) }
     }
     val viewModelsModule = module {
-        viewModel {
-            BasketViewModel(get())
-        }
-        viewModel {
-            ItemDetailViewModel(get())
-        }
-        viewModel {
-            OrderConfirmationViewModel(get())
-        }
-        viewModel {
-            GroceryListViewModel(get())
-        }
+        viewModel { BasketViewModel(get()) }
+        viewModel { ItemDetailViewModel(get()) }
+        viewModel { OrderConfirmationViewModel(get()) }
+        viewModel { GroceryListViewModel(get()) }
     }
 }

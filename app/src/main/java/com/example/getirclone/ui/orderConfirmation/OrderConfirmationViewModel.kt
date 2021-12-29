@@ -7,7 +7,7 @@ import com.example.getirclone.repository.BasketRepository
 import kotlinx.coroutines.launch
 
 class OrderConfirmationViewModel
-constructor(val basketRepository: BasketRepository): ViewModel() {
+constructor(private val basketRepository: BasketRepository): ViewModel() {
 
     fun deleteProductFromBasket(product: Product) {
         viewModelScope.launch {

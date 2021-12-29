@@ -7,7 +7,7 @@ import com.example.getirclone.repository.BasketRepository
 import kotlinx.coroutines.launch
 
 class ItemDetailViewModel
-constructor(val basketRepository: BasketRepository): ViewModel() {
+constructor(private val basketRepository: BasketRepository): ViewModel() {
     fun addToBasket(product: Product) {
         viewModelScope.launch {
             basketRepository.upsert(product)
